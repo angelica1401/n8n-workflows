@@ -1,0 +1,826 @@
+{
+  "name": "n8n_v1_ dm_insta",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ba353e2b-1196-4cc4-9935-b6ddf609aae6",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -3520,
+        1008
+      ],
+      "id": "acd3fd7c-c77d-4969-b055-10e6bd740b1c",
+      "name": "Webhook1",
+      "webhookId": "ba353e2b-1196-4cc4-9935-b6ddf609aae6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f69bee2-5a16-476a-88e1-c1d4023bd04f",
+              "name": "token",
+              "value": "coloque seu token aqui",
+              "type": "string"
+            },
+            {
+              "id": "3a1be705-ce35-4f59-b391-685e49000bb5",
+              "name": "meu_id",
+              "value": "={{ $json.body.entry[0].id }}",
+              "type": "string"
+            },
+            {
+              "id": "f6ca6723-390c-476c-a0b5-26377b1fdbc3",
+              "name": "from_id",
+              "value": "={{ $json.body.entry[0].changes[0].value.from.id }}",
+              "type": "string"
+            },
+            {
+              "id": "bd389f94-bebd-4cec-a101-f3a60bd70edc",
+              "name": "from_username",
+              "value": "={{ $json.body.entry[0].changes[0].value.from.username }}",
+              "type": "string"
+            },
+            {
+              "id": "158d4902-a8e6-4a24-861b-77de4c67c9ca",
+              "name": "media_id",
+              "value": "={{ $json.body.entry[0].changes[0].value.media.id }}",
+              "type": "string"
+            },
+            {
+              "id": "7753f5f9-b624-4caa-ba7c-282067b30831",
+              "name": "comment_id",
+              "value": "={{ $json.body.entry[0].changes[0].value.id }}",
+              "type": "string"
+            },
+            {
+              "id": "4b8fdf3a-6e5a-4f81-8f6e-829818f73486",
+              "name": "comment",
+              "value": "={{ $json.body.entry[0].changes[0].value.text }}",
+              "type": "string"
+            },
+            {
+              "id": "b0d36b26-faa8-48e6-a07c-28f6627c60a8",
+              "name": "field",
+              "value": "={{ $json.body.entry[0].changes[0].field }}",
+              "type": "string"
+            },
+            {
+              "id": "974cdabe-7dfc-426c-a797-5fef1af5e8fe",
+              "name": "id_usuario",
+              "value": "={{ $json.body.entry[0].messaging[0].sender.id }}",
+              "type": "string"
+            },
+            {
+              "id": "f1135b75-5af1-4016-abac-6b2bb5c2b545",
+              "name": "mensagem_direct",
+              "value": "={{ $json.body.entry[0].messaging[0].message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "1e57ef48-f9e1-4f48-9951-7b86fc9cf0e3",
+              "name": "audio-direct",
+              "value": "={{ $json.body.entry[0].messaging[0].message.attachments[0].payload.url }}",
+              "type": "string"
+            },
+            {
+              "id": "ddf08586-daba-4a1b-81e7-f14c8dc787a8",
+              "name": "type-audio",
+              "value": "={{ $json.body.entry[0].messaging[0].message.attachments[0].type }}",
+              "type": "string"
+            },
+            {
+              "id": "2cb08a31-6281-4382-8859-82c52fdbc97f",
+              "name": "type-text",
+              "value": "={{ $json.body.entry[0].messaging[0].message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "cf5d508c-9750-4017-8813-5777b20bc34b",
+              "name": "__doc_version",
+              "value": "1.0",
+              "type": "string"
+            },
+            {
+              "id": "bb1e1d30-b7cb-47ef-9b36-3b3de86acce6",
+              "name": "__owner",
+              "value": "Angelica Sousa",
+              "type": "string"
+            },
+            {
+              "id": "22cc9ad7-3ce9-4ecc-a20d-e1d0554019c6",
+              "name": "__last_updated",
+              "value": "2026-02-19",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3296,
+        1008
+      ],
+      "id": "53e4d3fa-dac7-4948-9573-fef538f21741",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.field }}",
+                    "rightValue": "comments",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "7955fc91-bbc7-48f8-a01c-001aa3363a3c"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "comments"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "211a3035-7a38-454f-adea-f0e1ea8f80f2",
+                    "leftValue": "={{ $json.id_usuario }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "direct"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -3072,
+        1008
+      ],
+      "id": "57de9e04-7cca-4e50-96dd-2143837ec6d3",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2621d1b8-d27f-4e55-9faa-7556ec422c59",
+              "leftValue": "={{ $json.from_id }}",
+              "rightValue": "={{ $json.meu_id }}",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -2848,
+        992
+      ],
+      "id": "e2279372-6b79-462f-8f5b-2bc160071b9f",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "content": "## Recebe solicitações + faz o tratamento dos dados + identifica se é comentário ou direct (DM).\n",
+        "height": 428,
+        "width": 712,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -3616,
+        832
+      ],
+      "id": "cc86447b-cfc7-46eb-8306-c7cb46987216",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "## HTTP\nAqui é onde você configura/atualiza as URLs e as mensagens que vão ser disparadas no direct.",
+        "height": 700,
+        "width": 2008,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -3632,
+        1264
+      ],
+      "id": "15409e9f-ff27-45cc-b017-7cfb40905043",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "jsCode": "// INPUT esperado: $json.comment (string com o comentário do Instagram)\n// OUTPUT: [{ reply, tag, delay_ms, __last_variant }]\n\nconst raw = ($json.comment ?? \"\").toString();\nconst text = raw.trim().toLowerCase();\n\n// helper: verifica a palavra como termo isolado dentro da frase (case-insensitive)\nconst hasWord = (w) => new RegExp(`\\\\b${w}\\\\b`, 'i').test(raw);\n\n// define a tag com prioridade: match exato OU dentro da frase\nlet tag = null;\nif (/^(template)$/.test(text) || hasWord('template')) tag = 'template';\nelse if (/^(ia)$/.test(text) || hasWord('ia')) tag = 'ia';\nelse if (/^(dm)$/.test(text) || hasWord('dm')) tag = 'dm';\n\n// banco de respostas (adicione/edite à vontade)\nconst bank = {\n  template: [\n    \"Show o templete acelera a implementação. 🔔 Olha o seu direct, acabou de chegar!\",\n    \"🔥 Te mandei no direct, confere lá!\",\n    \"👉 Já te enviei, confere sua DM!\"\n  ],\n  ia: [\n    \"💡 A resposta tá na sua DM 😉\",\n    \"👀  Confere seu direct\",\n    \"Te chamei no direct 📩\"\n  ],\n  dm: [\n    \"Fechado — te chamo no DM agora 😉\",\n    \"Perfeito, vou te chamar no privado!\",\n    \"Beleza! Vou abrir uma DM com os detalhes.\"\n  ],\n  default: [\n    \"Valeu pelo comentário! Quer um guia rápido? Diga 'template', 'ia' ou 'dm' que eu envio.\"\n  ]\n};\n\n// evita repetir a última variação do mesmo grupo (se você propagar esse campo adiante)\nconst memory = $json.__last_variant || {}; // { tag, index }\nconst pick = (arr, avoidIndex) => {\n  let idx = Math.floor(Math.random() * arr.length);\n  if (arr.length > 1 && idx === avoidIndex) {\n    idx = (idx + 1) % arr.length;\n  }\n  return { text: arr[idx], index: idx };\n};\n\nconst arr = bank[tag || 'default'];\nconst avoid = (memory.tag === (tag || 'default')) ? memory.index : -1;\nconst choice = pick(arr, avoid);\n\n// jitter 12–75s (em ms) para reduzir padrão de bot\nconst delay_ms = 1000 * (12 + Math.floor(Math.random() * 64));\n\nreturn [{\n  reply: choice.text,\n  tag: tag || 'default',\n  delay_ms,\n  __last_variant: { tag: tag || 'default', index: choice.index }\n}];\n// Desenvolvido por Angelica Sousa "
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2272,
+        992
+      ],
+      "id": "44494230-022f-4b17-8408-696962f5cc06",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "621fb93d-9447-44f5-8f6c-2d457ba29e40",
+                    "leftValue": "= {{ $json.mensagem_direct.toLowerCase().trim() }}",
+                    "rightValue": "^(?!.*\\b(?:ia|template|dm)\\b)[\\s\\S]+$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Não tem palavra chave"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9988e051-745f-4ea8-977a-f9786d50f8da",
+                    "leftValue": "={{ $json.mensagem_direct.toLowerCase() }}",
+                    "rightValue": "^template$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "template"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "983a5126-78ab-42ac-b8b7-866add30b58c",
+                    "leftValue": "={{ $json.mensagem_direct.toLowerCase() }}\n",
+                    "rightValue": "^\\s*ia\\s*$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ia"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0b28bc05-0535-45d2-8e08-6ae3addf9671",
+                    "leftValue": "={{ $json.mensagem_direct.toLowerCase() }}\n",
+                    "rightValue": "^\\s*dm\\s*$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "dm"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -2928,
+        1504
+      ],
+      "id": "39577196-601b-4d96-aba3-9b38815def04",
+      "name": "Direct01"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "621fb93d-9447-44f5-8f6c-2d457ba29e40",
+                    "leftValue": "= {{ $json.mensagem_direct.toLowerCase().trim() }}",
+                    "rightValue": "^(?!.*\\b(prompt|olhos|foto|antigo|ritmo|fotografia|moto|voar|f1|template|imagem|instagram|facebook|flow)\\b).+\n",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Não tem palavra chave"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9988e051-745f-4ea8-977a-f9786d50f8da",
+                    "leftValue": "={{ $json.comment.toLowerCase() }}",
+                    "rightValue": "^template$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "template"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "983a5126-78ab-42ac-b8b7-866add30b58c",
+                    "leftValue": "={{ $json.comment.toLowerCase() }}\n",
+                    "rightValue": "^\\s*ia\\s*$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ia"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0b28bc05-0535-45d2-8e08-6ae3addf9671",
+                    "leftValue": "={{ $json.comment.toLowerCase() }}\n",
+                    "rightValue": "^\\s*dm\\s*$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "dm"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -2624,
+        960
+      ],
+      "id": "433b538e-1b6d-438f-9935-d7c2ca1530c3",
+      "name": "Comentário"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $('Edit Fields1').item.json.from_id }}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"button\",\n        \"text\": \"R$29,90 Aqui está o acesso 👇\",\n        \"buttons\": [\n          {\n            \"type\": \"web_url\",\n            \"url\": \"https://pay.kirvano.com/14cd0956-8b60-49cd-9992-e3f34d0ce477?aff=3f055fc5-59e1-4aeb-9afa-f29b6c246b3c\",\n            \"title\": \"CLIQUE PARA ACESSAR\"\n          }\n        ]\n      }\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1792,
+        992
+      ],
+      "id": "d554d2ac-d7a5-4cf7-87e0-8d1816fba19a",
+      "name": "Envia mensagens direct templete"
+    },
+    {
+      "parameters": {
+        "content": "Comemtario ",
+        "height": 448,
+        "width": 1280,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2896,
+        816
+      ],
+      "typeVersion": 1,
+      "id": "b6c43605-21ec-42e4-b326-dc7687247483",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"text\":\"Parabéns pelo interesse! ✅ Faça o pagamento e receba o acesso no seu whatsapp. Clique no botão abaixo  👇\",\n        \"buttons\":[\n          {\n            \"url\":\"https://pay.kirvano.com/14cd0956-8b60-49cd-9992-e3f34d0ce477?aff=3f055fc5-59e1-4aeb-9afa-f29b6c246b3c\",\n            \"type\":\"web_url\",\n            \"title\":\"CLIQUE PARA ACESSAR\"\n          }\n        ],\n        \"template_type\":\"button\"\n      }\n    }\n  },\n  \"recipient\":{\n    \"id\":\"{{ $('Edit Fields1').item.json.id_usuario }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2432,
+        1808
+      ],
+      "id": "f5b17773-4790-4420-8c8b-d320d8037dda",
+      "name": "Envia mensagens direct"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/{{ $('Switch').item.json.comment_id }}/replies",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "={{ $json.reply }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2048,
+        992
+      ],
+      "id": "f48ebcd4-10bd-41a1-92c4-a693905ee47f",
+      "name": "responde comentario"
+    },
+    {
+      "parameters": {
+        "content": "## Objetivo do script\n**Ele recebe um comentário vindo do Instagram ($json.comment) e devolve um array com um objeto contendo:\n\nreply: texto da resposta pronta\n\ntag: categoria detectada (template, ia, dm ou default)\n\ndelay_ms: atraso (ms) pra simular humano\n\n__last_variant: memória da última resposta usada pra evitar repetição",
+        "height": 368
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2336,
+        1104
+      ],
+      "typeVersion": 1,
+      "id": "8581591d-7d9c-42b3-8c61-fb0962b6b68d",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"text\":\"Parabéns pelo interesse! ✅ Faça o pagamento e receba o acesso no seu whatsapp. Clique no botão abaixo  👇\",\n        \"buttons\":[\n          {\n            \"url\":\"https://pay.kirvano.com/14cd0956-8b60-49cd-9992-e3f34d0ce477?aff=3f055fc5-59e1-4aeb-9afa-f29b6c246b3c\",\n            \"type\":\"web_url\",\n            \"title\":\"CLIQUE PARA ACESSAR\"\n          }\n        ],\n        \"template_type\":\"button\"\n      }\n    }\n  },\n  \"recipient\":{\n    \"id\":\"{{ $('Edit Fields1').item.json.id_usuario }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2256,
+        1584
+      ],
+      "id": "fb71277c-b5b8-4704-a553-bd6d39b1a092",
+      "name": "Envia mensagens direct patalavra chave"
+    },
+    {
+      "parameters": {
+        "content": "## I'm a note \n**# Automação n8n — Instagram: Auto-resposta Comentário + Direct (DM)\n\n## Visão geral\nEste workflow recebe eventos do Instagram via **Webhook**, normaliza o payload, identifica se a solicitação é **Comentário** ou **Direct (DM)** e executa uma resposta automática com:\n- **classificação por palavra-chave** (template / ia / dm / default)\n- **anti-repetição** de copy (memória de última variação)\n- **delay aleatório** para simular comportamento humano\n- **disparo via HTTP** para endpoints do Graph API (responder comentário e/ou enviar DM)\n\n> Objetivo de negócio: reduzir tempo de resposta, entregar materiais automaticamente e manter consistência de atendimento sem vibe de bot.\n\n---\n\n## Arquitetura (macrofluxo)\n1) **Webhook1** recebe evento  \n2) **Edit Fields1** normaliza dados (campos obrigatórios)  \n3) **Switch** roteia: `comment` vs `direct`  \n4) Ramificação **Comentário**:\n   - Filter → Switch de tags → Code (gera reply/tag/delay) → HTTP responde comentário → HTTP envia DM (quando aplicável)\n5) Ramificação **Direct**:\n   - Switch de tags → HTTP envia DM (mensagem por palavra-chave / fallback)\n\n---\n\n## Inventário de nós (o que cada parte faz)\n\n### Bloco: Entrada + Tratamento + Roteamento (roxo)\n- **Webhook1**\n  - Função: ponto de entrada (POST)\n  - Entrada esperada: evento do Instagram (comentário ou DM)\n- **Edit Fields1** (manual)\n  - Função: padroniza/renomeia campos e garante que o fluxo trabalhe com um “contrato” fixo\n  - Saída sugerida (contrato mínimo):\n    - `type`: `\"comment\"` ou `\"direct\"`\n    - `comment`: texto (se for comment)\n    - `dm_text`: texto (se for direct)\n    - `comment_id` / `message_id`\n    - `user_id` (remetente)\n    - `ig_account_id` / `page_id` (se aplicável)\n- **Switch** (mode: Rules)\n  - Função: roteia para:\n    - `comment` → bloco “Comentário”\n    - `direct` → bloco “HTTP / Direct”\n\n---\n\n### Bloco: Comentário (verde)\n- **Filter**\n  - Função: filtra eventos inválidos/indesejados (ex.: payload sem texto, eventos duplicados, etc.)\n  - Recomendação: incluir checagens tipo:\n    - comentário vazio\n    - evento sem `comment_id`\n    - ignorar comentários do próprio perfil (anti-loop)\n- **Comentário** (Switch / Rules)\n  - Função: classifica o conteúdo do comentário em tags:\n    - `template`\n    - `ia`\n    - `dm`\n    - (fallback) “Não tem palavra-chave” / default\n- **Code**\n  - Função: gera o objeto final `{ reply, tag, delay_ms, __last_variant }`\n  - Observação: este nó não envia mensagem; ele só prepara o “pacote” de resposta.\n- **responde comentario** (HTTP Request)\n  - Função: envia a resposta pública no comentário (Graph API)\n- **Envia mensagens direct template** (HTTP Request)\n  - Função: envia DM para entrega (ex.: template/link), quando a regra exigir\n\n---\n\n### Bloco: HTTP / Direct (vermelho)\n- **Direct01** (Switch / Rules)\n  - Função: classifica mensagens recebidas por DM:\n    - `template`, `ia`, `dm` e fallback\n- **Envia mensagem direct palavra chave** (HTTP Request)\n  - Função: responde DM com mensagem específica para keyword\n- **Envia mensagens direct** (HTTP Request)\n  - Função: fallback/variante extra de resposta em DM (ex.: mensagem padrão, entrega, instrução)\n\n---\n\n## Contrato de dados (padrão recomendado)\n### Entrada (Webhook → Edit Fields1)\nCampos mínimos para o fluxo operar com previsibilidade:\n- `type`: `\"comment\"` | `\"direct\"`\n- `text`: string do conteúdo (normalizado)\n- `user_id`: identificador do remetente\n- `comment_id` (se `type=comment`)\n- `message_id` (se `type=direct`)\n\n> Dica: padroniza tudo em `text` e guarda os originais (`comment`/`dm_text`). Isso simplifica filtros e switches.\n\n### Saída do nó **Code**\nRetorna um array com um item:\n- `reply`: string (texto final)\n- `tag`: `\"template\" | \"ia\" | \"dm\" | \"default\"`\n- `delay_ms`: number (milissegundos)\n- `__last_variant`: `{ tag, index }` (memória anti-repetição)\n\n---\n\n## Onde alterar URLs e mensagens (pontos de configuração)\n**Atenção:** toda alteração de endpoint/mensagem deve acontecer nos nós HTTP:\n- `responde comentario`\n- `Envia mensagens direct template`\n- `Envia mensagem direct palavra chave`\n- `Envia mensagens direct`\n\nRecomendação de governança:\n- Centralizar textos em um nó “Set/Config” (ex.: `CONFIG_MESSAGES`)\n- Usar variáveis/credentials do n8n para tokens e IDs (nunca hardcode)\n\n---\n\n## Script do nó Code (documentação resumida)\n### O que ele faz\n- Normaliza o texto recebido\n- Detecta `tag` por palavra-chave (prioridade: template > ia > dm)\n- Escolhe uma variação de resposta evitando repetir a última\n- Gera `delay_ms` aleatório (12–75s)\n- Retorna no formato padrão do n8n\n\n### Limitações (transparência, sem caô)\n- Não envia DM sozinho (isso é responsabilidade dos nós HTTP)\n- Não “adivinha” contexto; só classifica por texto e aplica regras\n- Anti-repetição depende de `__last_variant` ser propagado no fluxo\n\n---\n\n## Testes (checklist)\n1) Simular evento `comment` com:\n   - texto = \"template\"\n   - texto = \"quero template e ia\" (deve priorizar `template`)\n   - texto sem keyword (cai em `default`)\n2) Simular evento `direct` com:\n   - texto = \"ia\"\n   - texto = \"dm\"\n3) Validar:\n   - resposta não repete variação quando `__last_variant` está presente\n   - delay_ms dentro do range esperado\n   - endpoints respondendo 200/201\n\n---\n\n## Segurança & LGPD\n- Tokens e IDs sempre via **Credentials** / **ENV**\n- Nunca logar payload com dados sensíveis em texto puro\n- Amostras de payload devem ser mockadas (dados fake)\n\n---\n\n## Evoluções recomendadas (roadmap)\n- Adicionar deduplicação por `comment_id/message_id` (anti reprocessamento)\n- Adicionar Error Workflow / alertas (Slack/Discord) quando HTTP falhar\n- Adicionar rate limit/backoff para evitar bloqueio de API",
+        "height": 3808,
+        "width": 608
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -4448,
+        816
+      ],
+      "typeVersion": 1,
+      "id": "4b36e9b3-82c1-410a-9c78-0b83c03bc516",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Direct01",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Comentário",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "responde comentario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Direct01": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Envia mensagens direct patalavra chave",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envia mensagens direct",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envia mensagens direct",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Comentário": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "responde comentario": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagens direct templete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia mensagens direct patalavra chave": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7f600db5-adc2-4d37-8946-87428d1c2031",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9837161bfce1aff9fd3e504fa9553cefc61473a13e54040f119f322cce2e0493"
+  },
+  "id": "UTeOlF2EN5A7iZMi",
+  "tags": [
+    {
+      "createdAt": "2026-02-19T20:37:11.355Z",
+      "updatedAt": "2026-02-19T20:37:11.355Z",
+      "id": "5vNr4XsahuhU4sRq",
+      "name": "GitHub"
+    }
+  ]
+}
